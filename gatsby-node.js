@@ -100,7 +100,7 @@ exports.createPages = async ({ graphql, actions }) => {
     const YYYY = YYYYMM.slice(0, 4);
     const MM = YYYYMM.slice(4);
 
-    return `/schedule/${YYYY}/${MM}/`;
+    return `/schedule/${YYYY}/${MM}`;
   }
 
   const thisMonth = parseInt(format(new Date(), 'YYYYMM'), 10);
