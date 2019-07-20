@@ -86,7 +86,7 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   // スケジュールページを生成
-  const scheduleTemplate = path.resolve(`src/templates/scheduleTemplate.tsx`);
+  const scheduleTemplate = path.resolve(`src/templates/ScheduleTemplate.tsx`);
 
   const min = Math.min(...YYYYMMs);
   const max = Math.max(...YYYYMMs);
