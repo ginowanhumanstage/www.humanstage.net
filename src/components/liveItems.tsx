@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import LiveItem from './LiveItem';
+import LiveItem from './liveItem';
 
 // interface IProps {
 //   data: Event[];
