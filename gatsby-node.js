@@ -43,7 +43,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { allWordpressPage, allWordpressPost } = result.data;
 
   // 固定ページを生成
-  const pageTemplate = path.resolve(`./src/templates/PageTemplate.tsx`);
+  const pageTemplate = path.resolve(`src/templates/PageTemplate.tsx`);
 
   allWordpressPage.edges.forEach(edge => {
     createPage({
@@ -57,7 +57,7 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   // イベントページを生成
-  const postTemplate = path.resolve(`./src/templates/PostTemplate.tsx`);
+  const postTemplate = path.resolve(`src/templates/PostTemplate.tsx`);
   const posts = allWordpressPost.edges;
   const YYYYMMs = new Set();
 
@@ -86,7 +86,7 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   // スケジュールページを生成
-  const scheduleTemplate = path.resolve(`./src/templates/scheduleTemplate.tsx`);
+  const scheduleTemplate = path.resolve(`src/templates/scheduleTemplate.tsx`);
 
   const min = Math.min(...YYYYMMs);
   const max = Math.max(...YYYYMMs);
@@ -144,7 +144,7 @@ exports.createPages = async ({ graphql, actions }) => {
   });
 
   // トップページを生成
-  const topPageTemplate = path.resolve(`./src/templates/TopPageTemplate.tsx`);
+  const topPageTemplate = path.resolve(`src/templates/TopPageTemplate.tsx`);
   const today = format(new Date(), 'YYYYMMDD');
 
   createPage({
