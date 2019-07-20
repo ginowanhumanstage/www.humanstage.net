@@ -4,7 +4,7 @@ import { graphql } from 'gatsby';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import LiveItems from '../components/LiveItems';
+import LiveItems from '../components/liveItems';
 import Pagination from '../components/pagination';
 
 export default ({ data, pageContext, location }) => {
