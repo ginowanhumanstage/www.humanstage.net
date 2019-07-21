@@ -6,6 +6,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import LiveItems from '../components/liveItems';
 import Pagination from '../components/pagination';
+import Calendar from '../components/calendar';
 
 export default ({ data, pageContext, location }) => {
   const pathItems = location.pathname.split('/');
@@ -30,6 +31,7 @@ export default ({ data, pageContext, location }) => {
       <SEO title={title} />
       <Headline>スケジュール</Headline>
       <Pagination pageData={pageData} />
+      <Calendar date={`${year}-${month}-01`} />
       <LiveItems data={data} />
       <Pagination pageData={pageData} />
     </Layout>
