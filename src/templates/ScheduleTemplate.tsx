@@ -36,8 +36,14 @@ export default ({ data, pageContext, location }) => {
       <SEO title={title} />
       <Headline>スケジュール</Headline>
       <Pagination pageData={pageData} />
-      <Calendar date={`${year}-${month}-01`} slugs={slugs} />
-      <LiveItems data={data} />
+      <ContentsWrapper>
+        <Sidebar>
+          <Calendar date={`${year}-${month}-01`} slugs={slugs} />
+        </Sidebar>
+        <Main>
+          <LiveItems data={data} />
+        </Main>
+      </ContentsWrapper>
       <Pagination pageData={pageData} />
     </Layout>
   );
@@ -84,5 +90,33 @@ const Headline = styled.h1`
 
   @media (min-width: 768px) {
     font-size: 1.7rem;
+  }
+`;
+
+const ContentsWrapper = styled.div`
+  margin: 0 auto;
+
+  @media (min-width: 768px) {
+    display: flex;
+    flex-direction: row-reverse;
+    width: calc(100% - 100px);
+  }
+`;
+
+const Main = styled.div`
+  @media (min-width: 768px) {
+    flex: 1;
+    margin-right: 1rem;
+  }
+`;
+
+const Sidebar = styled.aside`
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+
+  @media (min-width: 768px) {
+    width: 240px;
+    border: none;
+    margin: 0;
   }
 `;

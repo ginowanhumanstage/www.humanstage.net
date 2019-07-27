@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
+import { Link } from 'gatsby';
 import {
   format,
   eachDay,
@@ -14,6 +15,7 @@ import {
   isThursday,
   isFriday,
 } from 'date-fns';
+import slugToPath from '../lib/slugToPath';
 
 interface IProps {
   date: string; // 'YYYY-MM-DD'
@@ -48,12 +50,16 @@ export default class Calendar extends React.Component<IProps> {
       let hasEvent = false;
       let isHoliday = false;
       let isTavern = false;
+      let path = null;
       const fullDate = format(day, 'YYYYMMDD');
 
       if (
         this.props.slugs &&
         this.props.slugs.find(slug => slug === fullDate)
       ) {
+        const slug = this.props.slugs.find(slug => slug === fullDate);
+        const eventPath = slugToPath(slug);
+        path = `/schedule/${eventPath}`;
         hasEvent = true;
       } else if (isMonday(day)) {
         isHoliday = true;
@@ -73,7 +79,11 @@ export default class Calendar extends React.Component<IProps> {
           isHoliday={isHoliday}
           isTavern={isTavern}
         >
-          <span>{format(day, 'D')}</span>
+          {hasEvent && path ? (
+            <Link to={path}>{format(day, 'D')}</Link>
+          ) : (
+            <span>{format(day, 'D')}</span>
+          )}
         </DayItem>,
       );
     });
@@ -129,8 +139,7 @@ const CalendarWrapper = styled.div`
   margin: 0 auto;
 
   @media (min-width: 768px) {
-    font-size: 1rem;
-    width: calc(100% - 100px);
+    width: 100%;
   }
 `;
 
@@ -139,6 +148,7 @@ const DayList = styled.ul`
   grid-template-columns: repeat(7, 1fr);
   list-style: none;
   padding: 0;
+  margin: 0;
 `;
 
 const DayHeader = styled.li`
@@ -146,15 +156,9 @@ const DayHeader = styled.li`
 `;
 
 const activeStyles = `
+  > a,
   > span {
     background-color: #96d7ff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    border-radius: 30px;
-    width: 2rem;
-    height: 2rem;
   }
 `;
 
@@ -163,21 +167,34 @@ const holidayStyles = `
 `;
 
 const tavernStyles = `
+  > a,
   > span {
     background-color: #ffd5a6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
-    border-radius: 30px;
-    width: 2rem;
-    height: 2rem;
   }
 `;
 
 const DayItem = styled.li`
   padding: .5rem 0;
   visibility: ${props => (props.lastMonth ? 'hidden' : 'visible')};
+
+  > span {
+    cursor: default;
+  }
+
+  > a {
+    text-decoration: none;
+  }
+
+  > a,
+  > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 30px;
+    width: 1.75rem;
+    height: 1.75rem;
+  }
 
   ${props =>
     props.hasEvent
@@ -199,10 +216,6 @@ const DayItem = styled.li`
           ${tavernStyles}
         `
       : ''}
-
-  @media (min-width: 768px) {
-    font-size: 1rem;
-  }
 `;
 
 const Marks = styled.p`

@@ -59,7 +59,8 @@ const LiveItems = styled.div`
   }
 
   @media (min-width: 768px) {
-    width: calc(100% - 100px);
+    margin: 0;
+    width: 100%;
   }
 `;
 

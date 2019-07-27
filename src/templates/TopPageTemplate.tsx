@@ -14,7 +14,9 @@ export default ({ data }) => {
     <Layout>
       <SEO title="" />
       <Headline>Upcoming Events</Headline>
-      <LiveItems data={data} />
+      <LiveItemsWrapper>
+        <LiveItems data={data} />
+      </LiveItemsWrapper>
       <ButtonWrapper>
         <Link to={`/schedule/${thisMonth}`}>
           <Button>More Schedule</Button>
@@ -66,6 +68,13 @@ const Headline = styled.h1`
 
   @media (min-width: 768px) {
     font-size: 1.7rem;
+  }
+`;
+
+const LiveItemsWrapper = styled.div`
+  @media (min-width: 768px) {
+    margin: 0 auto 1rem;
+    width: calc(100% - 100px);
   }
 `;
 
