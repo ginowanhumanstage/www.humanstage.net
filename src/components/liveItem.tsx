@@ -99,6 +99,11 @@ const MainVisual = styled.div`
   grid-column: 1 / 3;
   grid-row: 1 / 2;
 
+  .gatsby-image-outer-wrapper,
+  .gatsby-image-wrapper {
+    height: 100%;
+  }
+
   img {
     width: 100%;
     height: auto;
