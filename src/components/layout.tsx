@@ -56,6 +56,6 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
     color: #1a1a1a;
     font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", Roboto, "Yu Gothic", YuGothic, sans-serif;
-    background-color: #F7F9F9;
+    background-color: #f9f9fa;
   }
 `;

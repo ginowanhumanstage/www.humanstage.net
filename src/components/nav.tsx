@@ -115,7 +115,7 @@ const AppBar = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: #fff;
-  border-top: 5px solid #188fd9;
+  border-top: 5px solid #5897df;
   border-bottom: 1px solid #ddd;
   height: 60px;
   box-sizing: border-box;

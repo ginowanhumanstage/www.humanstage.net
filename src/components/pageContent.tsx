@@ -45,7 +45,7 @@ const Content = styled.div`
     &.has-drop-cap {
       &::first-letter {
         font-size: 2.2rem;
-        background-color: #ff2151;
+        background-color: #ff3333;
         color: #fff;
         float: left;
         margin: 0 0.5rem 0 0;

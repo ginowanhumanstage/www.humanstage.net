@@ -155,10 +155,13 @@ const DayHeader = styled.li`
   padding: 0.5rem 0;
 `;
 
-const activeStyles = `
+const EVENT_DAY_COLOR = '#96d7ff';
+const TAVERN_DAY_COLOR = '#ffd5a6';
+
+const eventDayStyles = `
   > a,
   > span {
-    background-color: #96d7ff;
+    background-color: ${EVENT_DAY_COLOR};
   }
 `;
 
@@ -166,10 +169,10 @@ const holidayStyles = `
   color: #ccc;
 `;
 
-const tavernStyles = `
+const tavernDayStyles = `
   > a,
   > span {
-    background-color: #ffd5a6;
+    background-color: ${TAVERN_DAY_COLOR};
   }
 `;
 
@@ -199,7 +202,7 @@ const DayItem = styled.li`
   ${props =>
     props.hasEvent
       ? css`
-          ${activeStyles}
+          ${eventDayStyles}
         `
       : ''}
 
@@ -213,7 +216,7 @@ const DayItem = styled.li`
   ${props =>
     props.isTavern
       ? css`
-          ${tavernStyles}
+          ${tavernDayStyles}
         `
       : ''}
 `;
@@ -224,19 +227,21 @@ const Marks = styled.p`
 
 const MarkOfEvent = styled.i`
   display: inline-block;
-  background-color: #96d7ff;
+  background-color: ${EVENT_DAY_COLOR};
   width: 1rem;
   height: 1rem;
   vertical-align: bottom;
   margin-right: 0.25rem;
+  border-radius: 50%;
 `;
 
 const MarkOfTavern = styled.i`
   display: inline-block;
-  background-color: #ffd5a6;
+  background-color: ${TAVERN_DAY_COLOR};
   width: 1rem;
   height: 1rem;
   vertical-align: bottom;
   margin-left: 0.5rem;
   margin-right: 0.25rem;
+  border-radius: 50%;
 `;
