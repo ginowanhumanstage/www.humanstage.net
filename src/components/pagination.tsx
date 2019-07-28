@@ -14,7 +14,7 @@ const Index: React.SFC<IProps> = ({ pageData }) => {
   return (
     <Pagination>
       {prev ? (
-        <Link to={prev}>
+        <Link to={prev} rel="prev">
           <LeftIcon />
         </Link>
       ) : (
@@ -26,7 +26,7 @@ const Index: React.SFC<IProps> = ({ pageData }) => {
       </CurrentPage>
 
       {next ? (
-        <Link to={next}>
+        <Link to={next} rel="next">
           <RightIcon />
         </Link>
       ) : (
@@ -81,6 +81,8 @@ const Pagination = styled.div`
 
 const CurrentPage = styled.div`
   font-size: 1.4rem;
+  word-break: break-all;
+  flex: 1;
 
   @media (min-width: 768px) {
     font-size: 1.7rem;
