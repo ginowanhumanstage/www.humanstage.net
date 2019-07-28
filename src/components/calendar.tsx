@@ -15,6 +15,7 @@ import {
   isThursday,
   isFriday,
 } from 'date-fns';
+import jaLocale from 'date-fns/locale/ja';
 import slugToPath from '../lib/slugToPath';
 
 interface IProps {
@@ -102,7 +103,7 @@ export default class Calendar extends React.Component<IProps> {
     days.forEach(day => {
       dayHeaders.push(
         <DayHeader key={format(day, 'YYYYMMDD')}>
-          {format(day, 'dd')}
+          {format(day, 'dd', { locale: jaLocale })}
         </DayHeader>,
       );
     });
