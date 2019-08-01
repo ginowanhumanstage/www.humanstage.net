@@ -12,14 +12,6 @@ export default ({ data, pageContext, location }) => {
   const pathItems = location.pathname.split('/');
   const year = pathItems[2];
   const month = pathItems[3];
-  const pageData = {
-    current: {
-      year,
-      month,
-    },
-    prev: pageContext.prev,
-    next: pageContext.next,
-  };
 
   const title =
     year && month
@@ -35,7 +27,11 @@ export default ({ data, pageContext, location }) => {
     <Layout>
       <SEO title={title} />
       <Headline>スケジュール</Headline>
-      <Pagination pageData={pageData} />
+      <Pagination prev={pageContext.prev} next={pageContext.next}>
+        <CurrentPage>
+          {year}/{month}
+        </CurrentPage>
+      </Pagination>
       <ContentsWrapper>
         <Sidebar>
           <Calendar date={`${year}-${month}-01`} slugs={slugs} />
@@ -44,7 +40,7 @@ export default ({ data, pageContext, location }) => {
           <LiveItems data={data} />
         </Main>
       </ContentsWrapper>
-      <Pagination pageData={pageData} />
+      <Pagination prev={pageContext.prev} next={pageContext.next} />
     </Layout>
   );
 };
@@ -118,5 +114,15 @@ const Sidebar = styled.aside`
     width: 240px;
     border: none;
     margin: 0;
+  }
+`;
+
+const CurrentPage = styled.div`
+  font-size: 1.4rem;
+  word-break: break-all;
+  flex: 1;
+
+  @media (min-width: 768px) {
+    font-size: 1.7rem;
   }
 `;

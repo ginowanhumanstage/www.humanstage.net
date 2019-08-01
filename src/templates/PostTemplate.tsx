@@ -1,17 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link, graphql } from 'gatsby';
-import LeftIcon from 'react-feather/dist/icons/chevron-left';
-import RightIcon from 'react-feather/dist/icons/chevron-right';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import LiveItem from '../components/liveItem';
 import slugToPath from '../lib/slugToPath';
+import Pagination from '../components/pagination';
 
 export default ({ data, pageContext, path }) => {
   const schedulePagePath = path.slice(0, -3);
   const { prev, next } = pageContext;
+  const prevPath = prev ? `schedule/${slugToPath(prev.slug)}` : null;
+  const nextPath = next ? `schedule/${slugToPath(next.slug)}` : null;
 
   return (
     <Layout>
@@ -20,28 +21,12 @@ export default ({ data, pageContext, path }) => {
       <LiveItemWrapper>
         <LiveItem data={data.wordpressPost} isDetail></LiveItem>
       </LiveItemWrapper>
-      <Pagination>
-        {prev ? (
-          <Link to={`schedule/${slugToPath(prev.slug)}`} rel="prev">
-            <LeftIcon />
-          </Link>
-        ) : (
-          <div />
-        )}
-
+      <Pagination prev={prevPath} next={nextPath}>
         <ButtonWrapper>
           <Link to={schedulePagePath}>
             <Button>More Schedule</Button>
           </Link>
         </ButtonWrapper>
-
-        {next ? (
-          <Link to={`schedule/${slugToPath(next.slug)}`} rel="next">
-            <RightIcon />
-          </Link>
-        ) : (
-          <div />
-        )}
       </Pagination>
     </Layout>
   );
@@ -90,47 +75,6 @@ const LiveItemWrapper = styled.div`
 
   @media (min-width: 768px) {
     width: calc(100% - 100px);
-  }
-`;
-
-const Pagination = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 0.25rem;
-  margin: 1rem 0;
-
-  > a,
-  > div {
-    height: 40px;
-    width: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: transform 0 linear;
-    color: inherit;
-
-    &:hover {
-      transition-duration: 100ms;
-    }
-
-    &:first-child {
-      &:hover,
-      &:focus {
-        transform: translateX(-5px);
-      }
-    }
-
-    &:last-child {
-      &:hover,
-      &:focus {
-        transform: translateX(5px);
-      }
-    }
-  }
-
-  @media (min-width: 768px) {
-    padding: 0 1rem;
   }
 `;
 

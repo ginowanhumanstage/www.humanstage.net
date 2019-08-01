@@ -5,12 +5,11 @@ import LeftIcon from 'react-feather/dist/icons/chevron-left';
 import RightIcon from 'react-feather/dist/icons/chevron-right';
 
 interface IProps {
-  pageData?: any;
+  prev: string | null;
+  next: string | null;
 }
 
-const Index: React.SFC<IProps> = ({ pageData }) => {
-  const { current, next, prev } = pageData;
-
+const Index: React.SFC<IProps> = ({ prev, next, children }) => {
   return (
     <Pagination>
       {prev ? (
@@ -21,9 +20,7 @@ const Index: React.SFC<IProps> = ({ pageData }) => {
         <div />
       )}
 
-      <CurrentPage>
-        {current.year}/{current.month}
-      </CurrentPage>
+      {children}
 
       {next ? (
         <Link to={next} rel="next">
@@ -76,15 +73,5 @@ const Pagination = styled.div`
 
   @media (min-width: 768px) {
     padding: 0 1rem;
-  }
-`;
-
-const CurrentPage = styled.div`
-  font-size: 1.4rem;
-  word-break: break-all;
-  flex: 1;
-
-  @media (min-width: 768px) {
-    font-size: 1.7rem;
   }
 `;
