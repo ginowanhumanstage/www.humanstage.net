@@ -125,7 +125,7 @@ export default class Calendar extends React.Component<IProps> {
           </span>
           <span>
             <MarkOfTavern />
-            居酒屋営業日
+            BAR営業日
           </span>
         </Marks>
       </CalendarWrapper>
