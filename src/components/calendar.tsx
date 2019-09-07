@@ -14,6 +14,7 @@ import {
   isWednesday,
   isThursday,
   isFriday,
+  isFirstDayOfMonth,
 } from 'date-fns';
 import jaLocale from 'date-fns/locale/ja';
 import slugToPath from '../lib/slugToPath';
@@ -35,16 +36,21 @@ export default class Calendar extends React.Component<IProps> {
     const endDate = endOfMonth(this.props.date);
     const startDateOfWeek = startOfWeek(startDate);
     const dayList = eachDay(startDate, endDate);
-    const lastMonthDates = eachDay(startDateOfWeek, subDays(startDate, 1));
 
     // カレンダー内の前月の穴埋め
-    lastMonthDates.forEach(day => {
-      days.push(
-        <DayItem key={format(day, 'YYYYMMDD')} lastMonth>
-          {format(day, 'D')}
-        </DayItem>,
-      );
-    });
+    // startDateOfWeek が1日月であれば処理を行わず
+    const lastMonthDates = isFirstDayOfMonth(startDateOfWeek)
+      ? null
+      : eachDay(startDateOfWeek, subDays(startDate, 1));
+    if (lastMonthDates) {
+      lastMonthDates.forEach(day => {
+        days.push(
+          <DayItem key={format(day, 'YYYYMMDD')} lastMonth>
+            {format(day, 'D')}
+          </DayItem>,
+        );
+      });
+    }
 
     // カレンダーの日付の生成
     dayList.forEach(day => {

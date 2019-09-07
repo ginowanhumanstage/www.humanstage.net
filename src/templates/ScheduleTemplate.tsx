@@ -6,7 +6,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import LiveItems from '../components/liveItems';
 import Pagination from '../components/pagination';
-// import Calendar from '../components/calendar';
+import Calendar from '../components/calendar';
 
 export default ({ data, pageContext, location }) => {
   const pathItems = location.pathname.split('/');
@@ -19,9 +19,9 @@ export default ({ data, pageContext, location }) => {
       : 'スケジュール';
 
   // カレンダーコンポーネントへイベント開催日を装飾させるためにslugの配列を生成
-  // const slugs = data.allWordpressPost.edges.map(edge => {
-  //   return edge.node.slug;
-  // });
+  const slugs = data.allWordpressPost.edges.map(edge => {
+    return edge.node.slug;
+  });
 
   return (
     <Layout>
@@ -33,9 +33,9 @@ export default ({ data, pageContext, location }) => {
         </CurrentPage>
       </Pagination>
       <ContentsWrapper>
-        {/* <Sidebar>
+        <Sidebar>
           <Calendar date={`${year}-${month}-01`} slugs={slugs} />
-        </Sidebar> */}
+        </Sidebar>
         <Main>
           <LiveItems data={data} />
         </Main>
