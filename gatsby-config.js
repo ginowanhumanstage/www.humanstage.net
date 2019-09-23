@@ -37,7 +37,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: `cms.humanstage.net`,
+        baseUrl: WP_BASE_URL,
         protocol: `https`,
         hostingWPCOM: false,
         useACF: true,
