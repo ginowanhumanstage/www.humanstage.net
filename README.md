@@ -1,6 +1,6 @@
-<h1 align="center">
-  www.humanstage.net-front
-</h1>
+## www.humanstage.net-front
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/73b01c74-994a-435e-9970-56aaae5898e6/deploy-status)](https://app.netlify.com/sites/elated-mcnulty-716ec2/deploys)
 
 宜野湾 HUMAN STAGE のフロントリポジトリ。  
 概要は以下の通り。
