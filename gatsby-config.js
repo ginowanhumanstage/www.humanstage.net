@@ -37,7 +37,7 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        baseUrl: WP_BASE_URL,
+        baseUrl: process.env.WP_BASE_URL,
         protocol: `https`,
         hostingWPCOM: false,
         useACF: true,
@@ -47,7 +47,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: GOOGLE_ANALYTICS_TRACKING_ID,
+        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
       },
     },
   ],
