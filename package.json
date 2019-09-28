@@ -1,5 +1,5 @@
 {
-  "name": "www.humanstage.net-front",
+  "name": "www.humanstage.net",
   "private": true,
   "description": "",
   "version": "1.0.0",
@@ -45,9 +45,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ginowanhumanstage/www.humanstage.net-front"
+    "url": "https://github.com/ginowanhumanstage/www.humanstage.net"
   },
   "bugs": {
-    "url": "https://github.com/ginowanhumanstage/www.humanstage.net-front/issues"
+    "url": "https://github.com/ginowanhumanstage/www.humanstage.net/issues"
   }
 }
