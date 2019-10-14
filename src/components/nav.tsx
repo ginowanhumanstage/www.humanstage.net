@@ -70,7 +70,7 @@ export default () => {
         width="250px"
         handler={false}
         open={open}
-        onMaskClick={() => changeOpne(false)}
+        onClose={() => changeOpne(false)}
         placement="right"
       >
         <DrawerManu>
