@@ -14,7 +14,7 @@ import logo from '../images/logo.png';
 
 export default () => {
   const [open, changeOpne] = useState(false);
-  const thisMonth = format(new Date(), 'YYYY/MM');
+  const thisMonth = format(new Date(), 'yyyy/LL');
 
   return (
     <AppBar>

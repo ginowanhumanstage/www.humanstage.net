@@ -103,7 +103,7 @@ exports.createPages = async ({ graphql, actions }) => {
     return `/schedule/${YYYY}/${MM}`;
   }
 
-  const thisMonth = parseInt(format(new Date(), 'YYYYMM'), 10);
+  const thisMonth = parseInt(format(new Date(), 'yyyyLL'), 10);
 
   schedulesArray.forEach((YYYYMM, index) => {
     const path = generatePath(YYYYMM.toString());
@@ -145,7 +145,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // トップページを生成
   const topPageTemplate = path.resolve(`src/templates/TopPageTemplate.tsx`);
-  const today = format(new Date(), 'YYYYMMDD');
+  const today = format(new Date(), 'yyyyLLdd');
 
   createPage({
     path: '/',

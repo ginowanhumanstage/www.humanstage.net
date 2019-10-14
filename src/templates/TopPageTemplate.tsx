@@ -8,7 +8,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 export default ({ data }) => {
-  const thisMonth = format(new Date(), 'YYYY/MM');
+  const thisMonth = format(new Date(), 'yyyy/LL');
 
   return (
     <Layout>

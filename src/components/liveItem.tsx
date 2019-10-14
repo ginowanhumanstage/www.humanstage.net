@@ -10,7 +10,7 @@ const Index = ({ isDetail, data }) => {
   const dates = data.acf.date.split('/');
   const dataTime = new Date(`${dates[2]}/${dates[1]}/${dates[0]}`);
 
-  const dateTime = format(dataTime, 'MM/DD');
+  const dateTime = format(dataTime, 'LL/dd');
 
   const day = ['日', '月', '火', '水', '木', '金', '土'];
   const weekDay = day[getDay(dataTime)];
