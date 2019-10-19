@@ -6,7 +6,7 @@ import { format } from 'date-fns';
 import logo from '../images/logo.png';
 
 export default () => {
-  const thisMonth = format(new Date(), 'yyyy/LL');
+  const thisMonth = format(new Date(), 'YYYY/MM');
 
   return (
     <Footer>

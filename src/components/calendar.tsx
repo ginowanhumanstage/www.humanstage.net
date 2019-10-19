@@ -46,7 +46,7 @@ export default class Calendar extends React.Component<IProps> {
       lastMonthDates.forEach(day => {
         days.push(
           <DayItem key={format(day, 'YYYYMMDD')} lastMonth>
-            {format(day, 'd')}
+            {format(day, 'D')}
           </DayItem>,
         );
       });
