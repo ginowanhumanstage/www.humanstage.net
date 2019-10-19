@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { Link } from 'gatsby';
 import {
   format,
-  eachDayOfInterval,
+  eachDay,
   startOfWeek,
   endOfWeek,
   startOfMonth,
@@ -15,13 +15,12 @@ import {
   isThursday,
   isFriday,
   isFirstDayOfMonth,
-  parseISO,
 } from 'date-fns';
 import jaLocale from 'date-fns/locale/ja';
 import slugToPath from '../lib/slugToPath';
 
 interface IProps {
-  date: string; // 'yyyy-LL-dd'
+  date: string; // 'YYYY-MM-DD'
   slugs: string[];
 }
 
@@ -33,26 +32,20 @@ export default class Calendar extends React.Component<IProps> {
 
   days() {
     const days = [];
-    const startDate = startOfMonth(parseISO(this.props.date));
-    const endDate = endOfMonth(parseISO(this.props.date));
+    const startDate = startOfMonth(this.props.date);
+    const endDate = endOfMonth(this.props.date);
     const startDateOfWeek = startOfWeek(startDate);
-    const dayList = eachDayOfInterval({
-      start: startDate,
-      end: endDate,
-    });
+    const dayList = eachDay(startDate, endDate);
 
     // カレンダー内の前月の穴埋め
     // startDateOfWeek が1日月であれば処理を行わず
     const lastMonthDates = isFirstDayOfMonth(startDateOfWeek)
       ? null
-      : eachDayOfInterval({
-          start: startDateOfWeek,
-          end: subDays(startDate, 1),
-        });
+      : eachDay(startDateOfWeek, subDays(startDate, 1));
     if (lastMonthDates) {
       lastMonthDates.forEach(day => {
         days.push(
-          <DayItem key={format(day, 'yyyyLLdd')} lastMonth>
+          <DayItem key={format(day, 'YYYYMMDD')} lastMonth>
             {format(day, 'd')}
           </DayItem>,
         );
@@ -65,7 +58,7 @@ export default class Calendar extends React.Component<IProps> {
       let isHoliday = false;
       let isTavern = false;
       let path = null;
-      const fullDate = format(day, 'yyyyLLdd');
+      const fullDate = format(day, 'YYYYMMDD');
 
       if (
         this.props.slugs &&
@@ -94,9 +87,9 @@ export default class Calendar extends React.Component<IProps> {
           isTavern={isTavern}
         >
           {hasEvent && path ? (
-            <Link to={path}>{format(day, 'd')}</Link>
+            <Link to={path}>{format(day, 'D')}</Link>
           ) : (
-            <span>{format(day, 'd')}</span>
+            <span>{format(day, 'D')}</span>
           )}
         </DayItem>,
       );
@@ -108,14 +101,14 @@ export default class Calendar extends React.Component<IProps> {
   dayHeaders() {
     const dayHeaders = [];
 
-    const days = eachDayOfInterval({
-      start: startOfWeek(parseISO(this.props.date)),
-      end: endOfWeek(parseISO(this.props.date)),
-    });
+    const days = eachDay(
+      startOfWeek(this.props.date),
+      endOfWeek(this.props.date),
+    );
 
     days.forEach(day => {
       dayHeaders.push(
-        <DayHeader key={format(day, 'yyyyLLdd')}>
+        <DayHeader key={format(day, 'YYYYMMDD')}>
           {format(day, 'dd', { locale: jaLocale })}
         </DayHeader>,
       );
