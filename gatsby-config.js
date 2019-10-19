@@ -1,3 +1,10 @@
+// https://www.gatsbyjs.org/docs/environment-variables/
+const activeEnv =
+  process.env.ACTIVE_ENV || process.env.NODE_ENV || 'development';
+require('dotenv').config({
+  path: `.env.${activeEnv}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `宜野湾 HUMAN STAGE`,
