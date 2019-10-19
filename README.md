@@ -20,7 +20,7 @@ $ npm install
 You can run the development server with:
 
 ```
-$ npm run development
+$ npm run develop
 ```
 
 Format the code with prettier before commit:
