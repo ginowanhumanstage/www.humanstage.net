@@ -40,6 +40,7 @@ const Index = ({ isDetail, data }) => {
             alt=""
           />
         ) : null}
+        {!data.featured_media ? <Noimage><NoimageCaption>HUMAN STAGE</NoimageCaption></Noimage>: null}
       </MainVisual>
       <Meta>
         <MetaDateTime>
@@ -310,4 +311,18 @@ const ShareButtonWrapper = styled.div`
     display: flex;
     flex-direction: column;
   }
+`;
+
+const Noimage = styled.div`
+  height: 100%;
+  background: #DDD;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const NoimageCaption = styled.p`
+  line-height: 1.5;
+  font-size: 3rem;
+  color: #AAA;
 `;
