@@ -39,8 +39,11 @@ const Index = ({ isDetail, data }) => {
             fluid={data.featured_media.localFile.childImageSharp.fluid}
             alt=""
           />
-        ) : null}
-        {!data.featured_media ? <Noimage><NoimageCaption>HUMAN STAGE</NoimageCaption></Noimage>: null}
+        ) : (
+          <NoImage>
+            <NoImageCaption>HUMAN STAGE</NoImageCaption>
+          </NoImage>
+        )}
       </MainVisual>
       <Meta>
         <MetaDateTime>
@@ -313,16 +316,24 @@ const ShareButtonWrapper = styled.div`
   }
 `;
 
-const Noimage = styled.div`
-  height: 100%;
+const NoImage = styled.div`
+  height: 212px;
   background: #DDD;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media (min-width: 768px) {
+    height: 100%;
+  }
 `;
 
-const NoimageCaption = styled.p`
+const NoImageCaption = styled.p`
   line-height: 1.5;
-  font-size: 3rem;
+  font-size: 1.6rem;
   color: #AAA;
+
+  @media (min-width: 768px) {
+    font-size: 1.6rem;
+  }
 `;
