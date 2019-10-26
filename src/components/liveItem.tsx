@@ -53,7 +53,7 @@ const Index = ({ isDetail, data }) => {
           <MetaDateTimeStart>START {startDate}</MetaDateTimeStart>
         </MetaDateTime>
       </Meta>
-      {!isDetail ? <Title>{data.title}</Title> : null}
+      {!isDetail ? <Title dangerouslySetInnerHTML={{ __html: data.title }} /> : null}
       <Adv isDetail={isDetail}>
         <AdvHeadline>Ticket info</AdvHeadline>
         <AdvContent dangerouslySetInnerHTML={{ __html: data.acf.adv }} />
