@@ -17,7 +17,7 @@ export default ({ data, pageContext, path }) => {
   return (
     <Layout>
       <SEO title={data.wordpressPost.title} />
-      <Headline>{data.wordpressPost.title}</Headline>
+      <Headline dangerouslySetInnerHTML={{ __html: data.wordpressPost.title }} />
       <LiveItemWrapper>
         <LiveItem data={data.wordpressPost} isDetail></LiveItem>
       </LiveItemWrapper>
