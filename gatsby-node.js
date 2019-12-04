@@ -92,8 +92,14 @@ exports.createPages = async ({ graphql, actions }) => {
   const max = Math.max(...YYYYMMs);
   let schedulesArray = [];
 
+  // min から max までの値 (YYYY/MM/DD) のスケジュールページを生成。
+  // 実在しない月 (下2桁が 00 もしくは 13 以上) であれば処理をスキップする。
+  // TODO: とても実装がイマイチなので、後で直したい
   for (let i = min; i <= max; i++) {
-    schedulesArray.push(i);
+    const numStr = parseInt(i.toString().slice(-2), 10);
+    if (numStr >= 1 && numStr <= 12) {
+      schedulesArray.push(i);
+    }
   }
 
   function generatePath(YYYYMM) {
