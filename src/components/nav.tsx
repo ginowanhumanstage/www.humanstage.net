@@ -6,6 +6,8 @@ import MenuIcon from 'react-feather/dist/icons/menu';
 import FacebookIcon from 'react-feather/dist/icons/facebook';
 import TwitterIcon from 'react-feather/dist/icons/twitter';
 import InstagramIcon from 'react-feather/dist/icons/instagram';
+import YoutubeIcon from 'react-feather/dist/icons/youtube';
+import ShoppingIcon from 'react-feather/dist/icons/shopping-cart';
 
 import Drawer from 'rc-drawer';
 import '../../node_modules/rc-drawer/assets/index.css';
@@ -60,6 +62,22 @@ export default () => {
             target="_blank"
           >
             <InstagramIcon size={20} />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.youtube.com/channel/UCkGHTZ4duRmOcwclouDiDKg"
+            target="_blank"
+          >
+            <YoutubeIcon size={20} />
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://humanstage.thebase.in/"
+            target="_blank"
+          >
+            <ShoppingIcon size={20} />
           </a>
         </li>
       </Sns>
