@@ -106,6 +106,9 @@ export default () => {
           </li>
         </DrawerManu>
       </Drawer>
+      <InfoBar>
+        <a href="https://twitter.com/HumanStage/status/1270614616658202624?s=20" target="_blank">ヒューマンステージからのお知らせ</a>
+      </InfoBar>
     </AppBar>
   );
 };
@@ -114,17 +117,18 @@ const AppBar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   background-color: #fff;
   border-top: 5px solid #5897df;
   border-bottom: 1px solid #ddd;
-  height: 60px;
+  height: 95px;
   box-sizing: border-box;
   padding: 0;
   margin-bottom: 1.25rem;
 
   @media (min-width: 768px) {
     padding: 0 0.5rem;
-    height: 120px;
+    height: 155px;
     justify-content: flex-start;
     margin-bottom: 2rem;
   }
@@ -245,6 +249,24 @@ const DrawerManu = styled.ul`
       &:hover {
         text-decoration: underline;
       }
+    }
+  }
+`;
+
+const InfoBar = styled.div`
+  width: 100%;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #ddd;
+  padding: .5em 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+  a {
+    color: #188fd9;
+    &:hover {
+      text-decoration: none;
     }
   }
 `;
