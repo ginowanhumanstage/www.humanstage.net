@@ -27,23 +27,36 @@ const Index = ({ isDetail, data }) => {
   const performers = data.acf.act ? data.acf.act.split(/\n|\r\n|\r/) : null;
   const performer = performers
     ? performers.map((act, i) => {
-        return <li key={i}>{act}</li>;
-      })
+      return <li key={i}>{act}</li>;
+    })
     : null;
+
+  let content = "";
+
+  if (data.description) {
+    content += data.description;
+    if (data.content) {
+      content += "\n";
+      content += data.content;
+    }
+  }
+  else if (data.content) {
+    content += data.content;
+  }
 
   return (
     <LiveItem>
       <MainVisual>
-        {data && data.featured_media ? (
+        {data?.featured_media?.localFile?.childImageSharp?.fluid ? (
           <Img
             fluid={data.featured_media.localFile.childImageSharp.fluid}
             alt=""
           />
         ) : (
-          <NoImage>
-            <NoImageCaption>HUMAN STAGE</NoImageCaption>
-          </NoImage>
-        )}
+            <NoImage>
+              <NoImageCaption>HUMAN STAGE</NoImageCaption>
+            </NoImage>
+          )}
       </MainVisual>
       <Meta>
         <MetaDateTime>
@@ -63,7 +76,7 @@ const Index = ({ isDetail, data }) => {
         <CastContent>{performer}</CastContent>
       </Cast>
       {isDetail ? (
-        <Details dangerouslySetInnerHTML={{ __html: data.description }} />
+        <Details dangerouslySetInnerHTML={{ __html: content }} />
       ) : null}
       {isDetail ? (
         <ShareButtonWrapper>

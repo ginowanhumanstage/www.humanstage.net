@@ -11,8 +11,8 @@ import Pagination from '../components/pagination';
 export default ({ data, pageContext, path }) => {
   const schedulePagePath = path.slice(0, -3);
   const { prev, next } = pageContext;
-  const prevPath = prev ? `schedule/${slugToPath(prev.slug)}` : null;
-  const nextPath = next ? `schedule/${slugToPath(next.slug)}` : null;
+  const prevPath = prev ? `/schedule/${slugToPath(prev.slug)}` : null;
+  const nextPath = next ? `/schedule/${slugToPath(next.slug)}` : null;
 
   return (
     <Layout>
@@ -37,6 +37,7 @@ export const query = graphql`
     wordpressPost(id: { eq: $id }) {
       title
       slug
+      content
       acf {
         act
         adv
