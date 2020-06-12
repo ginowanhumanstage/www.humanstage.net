@@ -37,6 +37,7 @@ export const query = graphql`
     wordpressPost(id: { eq: $id }) {
       title
       slug
+      content
       acf {
         act
         adv
