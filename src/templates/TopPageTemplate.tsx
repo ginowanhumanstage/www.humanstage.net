@@ -7,12 +7,17 @@ import LiveItems from '../components/liveItems';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
+import baseImg from '../images/img-base.jpg';
+
 export default ({ data }) => {
   const thisMonth = format(new Date(), 'YYYY/MM');
 
   return (
     <Layout>
       <SEO title="" />
+      <BaseLink>
+        <a href="https://humanstage.thebase.in/" target="_blank"><img src={baseImg} alt="Human Stage 応援サイト" /></a>
+      </BaseLink>
       <Headline>Upcoming Events</Headline>
       <LiveItemsWrapper>
         <LiveItems data={data} />
@@ -95,4 +100,8 @@ const Button = styled.div`
   &:hover {
     border-color: #ccc;
   }
+`;
+
+const BaseLink = styled.p`
+text-align: center;
 `;
