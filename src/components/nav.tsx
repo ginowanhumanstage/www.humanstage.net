@@ -125,7 +125,7 @@ export default () => {
         </DrawerManu>
       </Drawer>
       <InfoBar>
-        <a href="https://twitter.com/HumanStage/status/1270614616658202624?s=20" target="_blank">ヒューマンステージからのお知らせ</a>
+        <a href="https://twitter.com/HumanStage/status/1270614616658202624?" target="_blank">ヒューマンステージからのお知らせ</a>
       </InfoBar>
     </AppBar>
   );
