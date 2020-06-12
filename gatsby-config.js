@@ -7,7 +7,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
-    title: `宜野湾 HUMAN STAGE`,
+    title: `宜野湾 HUMAN STAGE (ヒューマンステージ)`,
     description: `沖縄県宜野湾市のライブハウス、HUMAN STAGE (ヒューマンステージ) のオフィシャルサイト。`,
     author: `@ginowanhumanstage`,
     siteUrl: `https://www.humanstage.net`,
