@@ -24,7 +24,7 @@ export default ({ data, pageContext, location }) => {
   });
 
   return (
-    <Layout>
+    <Layout lastSchedule={pageContext.lastSchedule}>
       <SEO title={title} />
       <Headline>スケジュール</Headline>
       <Pagination prev={pageContext.prev} next={pageContext.next}>

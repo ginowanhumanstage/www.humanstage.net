@@ -6,9 +6,9 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PageContent from '../components/pageContent';
 
-export default ({ data }) => {
+export default ({ data, pageContext }) => {
   return (
-    <Layout>
+    <Layout lastSchedule={pageContext.lastSchedule}>
       <SEO title={data.wordpressPage.title} />
       <Headline>{data.wordpressPage.title}</Headline>
       <PageContent data={data.wordpressPage} />

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import { format } from 'date-fns';
 import MenuIcon from 'react-feather/dist/icons/menu';
 import FacebookIcon from 'react-feather/dist/icons/facebook';
 import TwitterIcon from 'react-feather/dist/icons/twitter';
@@ -14,9 +13,11 @@ import '../../node_modules/rc-drawer/assets/index.css';
 
 import logo from '../images/logo.png';
 
-export default () => {
+type Props = {
+  lastSchedule: string;
+}
+export default (props: Props) => {
   const [open, changeOpne] = useState(false);
-  const thisMonth = format(new Date(), 'YYYY/MM');
 
   return (
     <AppBar>
@@ -27,10 +28,7 @@ export default () => {
       </Link>
       <Menu>
         <li>
-          <Link to={`/schedule/${thisMonth}`}>Schedule</Link>
-        </li>
-        <li>
-          <Link to="/party">Party Plan</Link>
+          <Link to={`/schedule/${props.lastSchedule}`}>Schedule</Link>
         </li>
         <li>
           <Link to="/about">About</Link>
@@ -93,13 +91,8 @@ export default () => {
       >
         <DrawerManu>
           <li>
-            <Link to={`/schedule/${thisMonth}`}>
+            <Link to={`/schedule/${props.lastSchedule}`}>
               <a>Schedule</a>
-            </Link>
-          </li>
-          <li>
-            <Link to="/party">
-              <a>Party Plan</a>
             </Link>
           </li>
           <li>

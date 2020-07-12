@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { useStaticQuery, graphql } from 'gatsby';
 import { createGlobalStyle } from 'styled-components';
 
@@ -13,7 +13,11 @@ import Nav from './nav';
 import Footer from './footer';
 import './layout.css';
 
-const Layout = ({ children }) => {
+type Props = {
+  children: ReactNode;
+  lastSchedule: string;
+}
+const Layout = ({ children, lastSchedule }: Props) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -27,7 +31,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <GlobalStyle />
-      <Nav />
+      <Nav lastSchedule={lastSchedule} />
       <main>{children}</main>
       <Footer />
     </>

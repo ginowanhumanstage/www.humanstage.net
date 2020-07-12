@@ -15,7 +15,7 @@ export default ({ data, pageContext, path }) => {
   const nextPath = next ? `/schedule/${slugToPath(next.slug)}` : null;
 
   return (
-    <Layout>
+    <Layout lastSchedule={pageContext.lastSchedule}>
       <SEO title={data.wordpressPost.title} />
       <Headline dangerouslySetInnerHTML={{ __html: data.wordpressPost.title }} />
       <LiveItemWrapper>
