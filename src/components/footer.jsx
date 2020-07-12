@@ -23,9 +23,6 @@ export default () => {
             <Link to={`/schedule/${thisMonth}`}>Schedule</Link>
           </li>
           <li>
-            <Link to="/party">Party Plan</Link>
-          </li>
-          <li>
             <Link to="/about">About</Link>
           </li>
           <li>
