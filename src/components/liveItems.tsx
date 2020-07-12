@@ -54,7 +54,7 @@ const LiveItems = styled.div`
     font-size: 0.8rem;
 
     &::after {
-      content: 'ライブ情報は現在準備中です。';
+      content: '現在ライブ情報は存在しません。';
     }
   }
 
