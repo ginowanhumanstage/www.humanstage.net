@@ -52,6 +52,7 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         id: edge.node.id,
         slug: edge.node.slug,
+        lastSchedule: "2020/06" // FIXME: 一旦ハードコード。記事情報のデータから生成できるようにしたい
       },
     });
   });
@@ -78,6 +79,7 @@ exports.createPages = async ({ graphql, actions }) => {
         slug: node.slug,
         prev,
         next,
+        lastSchedule: "2020/06" // FIXME: 一旦ハードコード。記事情報のデータから生成できるようにしたい
       },
     });
 
@@ -111,6 +113,12 @@ exports.createPages = async ({ graphql, actions }) => {
 
   const thisMonth = parseInt(format(new Date(), 'YYYYMM'), 10);
 
+  // スケジュールページの最終月を生成。
+  // トップページやナビゲーションのリンクで使用。
+  const lastScheduleNum = schedulesArray[schedulesArray.length - 1].toString();
+  const lastScheduleYYYY = lastScheduleNum.substr(0, 4);
+  const lastScheduleMM = lastScheduleNum.substr(4, 2);
+
   schedulesArray.forEach((YYYYMM, index) => {
     const path = generatePath(YYYYMM.toString());
     const gt = `${YYYYMM}00`;
@@ -131,6 +139,7 @@ exports.createPages = async ({ graphql, actions }) => {
         lt,
         prev,
         next,
+        lastSchedule: `${lastScheduleYYYY}/${lastScheduleMM}`
       },
     });
 
@@ -144,6 +153,7 @@ exports.createPages = async ({ graphql, actions }) => {
           lt,
           prev,
           next,
+          lastSchedule: `${lastScheduleYYYY}/${lastScheduleMM}`
         },
       });
     }
@@ -158,6 +168,7 @@ exports.createPages = async ({ graphql, actions }) => {
     component: topPageTemplate,
     context: {
       gte: today,
+      lastSchedule: `${lastScheduleYYYY}/${lastScheduleMM}`
     },
   });
 };

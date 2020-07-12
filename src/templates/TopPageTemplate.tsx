@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link, graphql } from 'gatsby';
-import { format } from 'date-fns';
 import LiveItems from '../components/liveItems';
 
 import Layout from '../components/layout';
@@ -9,11 +8,9 @@ import SEO from '../components/seo';
 
 import baseImg from '../images/img-base.jpg';
 
-export default ({ data }) => {
-  const thisMonth = format(new Date(), 'YYYY/MM');
-
+export default ({ data, pageContext }) => {
   return (
-    <Layout>
+    <Layout lastSchedule={pageContext.lastSchedule}>
       <SEO title="" />
       <BaseLink>
         <a href="https://humanstage.thebase.in/" target="_blank"><img src={baseImg} alt="Human Stage 応援サイト" /></a>
@@ -23,7 +20,7 @@ export default ({ data }) => {
         <LiveItems data={data} />
       </LiveItemsWrapper>
       <ButtonWrapper>
-        <Link to={`/schedule/${thisMonth}`}>
+        <Link to={`/schedule/${pageContext.lastSchedule}`}>
           <Button>More Schedule</Button>
         </Link>
       </ButtonWrapper>
