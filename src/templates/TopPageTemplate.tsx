@@ -7,11 +7,15 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 import baseImg from '../images/img-base.jpg';
+import campfireImg from '../images/img-campfire.jpg';
 
 export default ({ data, pageContext }) => {
   return (
     <Layout lastSchedule={pageContext.lastSchedule}>
       <SEO title="" />
+      <CampfireLink>
+        <a href="https://camp-fire.jp/projects/view/298923" target="_blank"><img src={campfireImg} alt="宜野湾HUMAN STAGE支援プロジェクト〜NEXT HUMAN STAGE〜" /></a>
+      </CampfireLink>
       <BaseLink>
         <a href="https://humanstage.thebase.in/" target="_blank"><img src={baseImg} alt="Human Stage 応援サイト" /></a>
       </BaseLink>
@@ -100,5 +104,21 @@ const Button = styled.div`
 `;
 
 const BaseLink = styled.p`
-text-align: center;
+　text-align: center;
+  display: block;
+  width: calc(100% - 30px);
+  margin: 0 auto;
+`;
+
+const CampfireLink = styled.p`
+  text-align: center;
+  display: block;
+  width: calc(100% - 30px);
+  max-width: 540px;
+  margin: 0 auto 1rem;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
 `;
