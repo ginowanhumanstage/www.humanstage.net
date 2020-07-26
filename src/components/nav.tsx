@@ -28,16 +28,7 @@ export default (props: Props) => {
       </Link>
       <Menu>
         <li>
-          <Link to={`/schedule/${props.lastSchedule}`}>Schedule</Link>
-        </li>
-        <li>
           <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/access">Access</Link>
-        </li>
-        <li>
-          <Link to="/system">System</Link>
         </li>
         <li>
           <Link to="/contact">Contact</Link>
@@ -91,23 +82,8 @@ export default (props: Props) => {
       >
         <DrawerManu>
           <li>
-            <Link to={`/schedule/${props.lastSchedule}`}>
-              <a>Schedule</a>
-            </Link>
-          </li>
-          <li>
             <Link to="/about">
               <a>About</a>
-            </Link>
-          </li>
-          <li>
-            <Link to="/access">
-              <a>Access</a>
-            </Link>
-          </li>
-          <li>
-            <Link to="/system">
-              <a>System</a>
             </Link>
           </li>
           <li>
@@ -117,9 +93,6 @@ export default (props: Props) => {
           </li>
         </DrawerManu>
       </Drawer>
-      <InfoBar>
-        <a href="https://twitter.com/HumanStage/status/1270614616658202624?" target="_blank">ヒューマンステージからのお知らせ</a>
-      </InfoBar>
     </AppBar>
   );
 };
@@ -260,24 +233,6 @@ const DrawerManu = styled.ul`
       &:hover {
         text-decoration: underline;
       }
-    }
-  }
-`;
-
-const InfoBar = styled.div`
-  width: 100%;
-  height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-top: 1px solid #ddd;
-  padding: .5em 0;
-  box-sizing: border-box;
-  font-size: 1rem;
-  a {
-    color: #188fd9;
-    &:hover {
-      text-decoration: none;
     }
   }
 `;

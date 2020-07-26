@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link, graphql } from 'gatsby';
+import Helmet from 'react-helmet';
 import LiveItems from '../components/liveItems';
 
 import Layout from '../components/layout';
@@ -13,21 +14,22 @@ export default ({ data, pageContext }) => {
   return (
     <Layout lastSchedule={pageContext.lastSchedule}>
       <SEO title="" />
+
+      { /* Tweet 埋め込みようの script */}
+      <Helmet>
+        <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8" />
+      </Helmet>
+
+      <TwitterCard>
+        <blockquote className="twitter-tweet"><p lang="ja" dir="ltr">ヒューマンステージからのお知らせ！ <a href="https://t.co/FLdCFA4Sdj">pic.twitter.com/FLdCFA4Sdj</a></p>&mdash; 山田さん (@HumanStage) <a href="https://twitter.com/HumanStage/status/1270614616658202624?ref_src=twsrc%5Etfw">June 10, 2020</a></blockquote>
+      </TwitterCard>
+
       <CampfireLink>
         <a href="https://camp-fire.jp/projects/view/298923" target="_blank"><img src={campfireImg} alt="宜野湾HUMAN STAGE支援プロジェクト〜NEXT HUMAN STAGE〜" /></a>
       </CampfireLink>
       <BaseLink>
         <a href="https://humanstage.thebase.in/" target="_blank"><img src={baseImg} alt="Human Stage 応援サイト" /></a>
       </BaseLink>
-      <Headline>Upcoming Events</Headline>
-      <LiveItemsWrapper>
-        <LiveItems data={data} />
-      </LiveItemsWrapper>
-      <ButtonWrapper>
-        <Link to={`/schedule/${pageContext.lastSchedule}`}>
-          <Button>More Schedule</Button>
-        </Link>
-      </ButtonWrapper>
     </Layout>
   );
 };
@@ -120,5 +122,14 @@ const CampfireLink = styled.p`
   img {
     width: 100%;
     height: auto;
+  }
+`;
+
+const TwitterCard = styled.div`
+  margin: 0 auto 1.5rem;
+  width: calc(100% - 30px);
+
+  > .twitter-tweet {
+    margin: 0 auto;
   }
 `;
