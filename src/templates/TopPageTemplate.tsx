@@ -30,15 +30,6 @@ export default ({ data, pageContext }) => {
       <BaseLink>
         <a href="https://humanstage.thebase.in/" target="_blank"><img src={baseImg} alt="Human Stage 応援サイト" /></a>
       </BaseLink>
-      <Headline>Upcoming Events</Headline>
-      <LiveItemsWrapper>
-        <LiveItems data={data} />
-      </LiveItemsWrapper>
-      <ButtonWrapper>
-        <Link to={`/schedule/${pageContext.lastSchedule}`}>
-          <Button>More Schedule</Button>
-        </Link>
-      </ButtonWrapper>
     </Layout>
   );
 };

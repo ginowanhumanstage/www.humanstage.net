@@ -20,16 +20,7 @@ export default () => {
         </SiteInfoLogo>
         <Menu>
           <li>
-            <Link to={`/schedule/${thisMonth}`}>Schedule</Link>
-          </li>
-          <li>
             <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/access">Access</Link>
-          </li>
-          <li>
-            <Link to="/system">System</Link>
           </li>
           <li>
             <Link to="/contact">Contact</Link>
@@ -37,13 +28,6 @@ export default () => {
         </Menu>
         <SiteInfoAddress>
           <p>
-            沖縄県宜野湾市長田1-11-1
-            <br />
-            〒901-2212
-          </p>
-          <p>
-            TEL : 098-893-3060
-            <br />
             Mail : human-s@nirai.ne.jp
           </p>
         </SiteInfoAddress>
