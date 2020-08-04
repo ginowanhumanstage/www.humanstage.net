@@ -8,7 +8,7 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 import baseImg from '../images/img-base.jpg';
-import campfireImg from '../images/img-campfire.jpg';
+
 
 export default ({ data, pageContext }) => {
   return (
@@ -25,7 +25,13 @@ export default ({ data, pageContext }) => {
       </TwitterCard>
 
       <CampfireLink>
-        <a href="https://camp-fire.jp/projects/view/298923" target="_blank"><img src={campfireImg} alt="宜野湾HUMAN STAGE支援プロジェクト〜NEXT HUMAN STAGE〜" /></a>
+        <p>
+          本当にたくさんのご支援ありがとうございます！<br />
+          NEXT HUMAN STAGE の詳細は9月に公表できる予定です。<br />
+          ご期待ください！
+        </p>
+        {/* @ts-ignore: loading="lazy" への型エラーを抑制 */}
+        <iframe frameBorder="0" height="365" scrolling="no" src="https://camp-fire.jp/projects/298923/widget" width="245" loading="lazy" />
       </CampfireLink>
       <BaseLink>
         <a href="https://humanstage.thebase.in/" target="_blank"><img src={baseImg} alt="Human Stage 応援サイト" /></a>
@@ -116,12 +122,12 @@ const CampfireLink = styled.p`
   text-align: center;
   display: block;
   width: calc(100% - 30px);
-  max-width: 540px;
-  margin: 0 auto 1rem;
+  margin: 2rem auto 2rem;
 
-  img {
-    width: 100%;
-    height: auto;
+  > p {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.4;
   }
 `;
 
