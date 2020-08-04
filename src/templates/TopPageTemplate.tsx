@@ -44,7 +44,7 @@ const BaseLink = styled.p`
   margin: 0 auto;
 `;
 
-const CampfireLink = styled.p`
+const CampfireLink = styled.div`
   text-align: center;
   display: block;
   width: calc(100% - 30px);
