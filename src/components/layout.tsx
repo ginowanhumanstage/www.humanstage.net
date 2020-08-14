@@ -6,7 +6,6 @@
  */
 
 import React, { ReactNode } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
 import { createGlobalStyle } from 'styled-components';
 
 import Nav from './nav';
@@ -15,23 +14,12 @@ import './layout.css';
 
 type Props = {
   children: ReactNode;
-  lastSchedule: string;
 }
-const Layout = ({ children, lastSchedule }: Props) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `);
-
+const Layout = ({ children }: Props) => {
   return (
     <>
       <GlobalStyle />
-      <Nav lastSchedule={lastSchedule} />
+      <Nav />
       <main>{children}</main>
       <Footer />
     </>

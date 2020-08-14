@@ -15,11 +15,11 @@ export default ({ data, pageContext, path }) => {
   const nextPath = next ? `/schedule/${slugToPath(next.slug)}` : null;
 
   return (
-    <Layout lastSchedule={pageContext.lastSchedule}>
-      <SEO title={data.wordpressPost.title} />
-      <Headline dangerouslySetInnerHTML={{ __html: data.wordpressPost.title }} />
+    <Layout>
+      <SEO title={data.wpPost.title} />
+      <Headline dangerouslySetInnerHTML={{ __html: data.wpPost.title }} />
       <LiveItemWrapper>
-        <LiveItem data={data.wordpressPost} isDetail></LiveItem>
+        <LiveItem data={data.wpPost} isDetail></LiveItem>
       </LiveItemWrapper>
       <Pagination prev={prevPath} next={nextPath}>
         <ButtonWrapper>
@@ -34,22 +34,24 @@ export default ({ data, pageContext, path }) => {
 
 export const query = graphql`
   query($id: String!) {
-    wordpressPost(id: { eq: $id }) {
+    wpPost(id: { eq: $id }) {
       title
       slug
       content
-      acf {
+      acfScuedule {
         act
         adv
         date
         open
         start
       }
-      featured_media {
-        localFile {
-          childImageSharp {
-            fluid(maxWidth: 1000) {
-              ...GatsbyImageSharpFluid
+      featuredImage {
+        node {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1000) {
+                ...GatsbyImageSharpFluid
+              }
             }
           }
         }

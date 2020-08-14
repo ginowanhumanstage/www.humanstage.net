@@ -19,12 +19,12 @@ export default ({ data, pageContext, location }) => {
       : 'スケジュール';
 
   // カレンダーコンポーネントへイベント開催日を装飾させるためにslugの配列を生成
-  const slugs = data.allWordpressPost.edges.map(edge => {
+  const slugs = data.allWpPost.edges.map(edge => {
     return edge.node.slug;
   });
 
   return (
-    <Layout lastSchedule={pageContext.lastSchedule}>
+    <Layout>
       <SEO title={title} />
       <Headline>スケジュール</Headline>
       <Pagination prev={pageContext.prev} next={pageContext.next}>
@@ -46,26 +46,27 @@ export default ({ data, pageContext, location }) => {
 };
 
 export const query = graphql`
-  query($gt: Date!, $lt: Date!) {
-    allWordpressPost(
+  query {
+    allWpPost(
       sort: { fields: [slug], order: ASC }
-      filter: { slug: { gt: $gt, lt: $lt } }
     ) {
       edges {
         node {
           id
           title
-          featured_media {
-            localFile {
-              childImageSharp {
-                fluid(maxWidth: 1000, maxHeight: 620, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFluid
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  fluid(maxWidth: 1000, maxHeight: 620, cropFocus: CENTER) {
+                    ...GatsbyImageSharpFluid
+                  }
                 }
               }
             }
           }
           slug
-          acf {
+          acfScuedule {
             date
             open
             start

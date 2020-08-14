@@ -13,10 +13,7 @@ import '../../node_modules/rc-drawer/assets/index.css';
 
 import logo from '../images/logo.png';
 
-type Props = {
-  lastSchedule: string;
-}
-export default (props: Props) => {
+export default () => {
   const [open, changeOpne] = useState(false);
 
   return (
