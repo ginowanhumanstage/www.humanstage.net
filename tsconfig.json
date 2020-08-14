@@ -3,7 +3,10 @@
     "target": "esnext",
     "module": "esnext",
     "jsx": "preserve",
-    "lib": ["dom", "es2017"],
+    "lib": [
+      "dom",
+      "es2017"
+    ],
     "moduleResolution": "node",
     "allowJs": true,
     "noEmit": true,
@@ -14,6 +17,10 @@
     "removeComments": false,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "typeRoots": ["node_modules/@types", "./typings"]
+    "typeRoots": [
+      "node_modules/@types",
+      "./typings",
+      "src/types"
+    ]
   }
 }
