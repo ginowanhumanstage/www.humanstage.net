@@ -7,9 +7,9 @@ import SEO from '../components/seo';
 
 import baseImg from '../images/img-base.jpg';
 
-export default ({ pageContext }) => {
+export default () => {
   return (
-    <Layout lastSchedule={pageContext.lastSchedule}>
+    <Layout>
       <SEO title="" />
 
       { /* Tweet 埋め込みようの script */}

@@ -19,8 +19,8 @@ export default ({ data }) => {
 
   return (
     <LiveItems>
-      {data.allWordpressPost.edges.map(({ node }) => {
-        const path = dateFormat(node.acf.date);
+      {data.allWpPost.edges.map(({ node }) => {
+        const path = dateFormat(node.acfScuedule.date);
 
         return (
           <StyledLink

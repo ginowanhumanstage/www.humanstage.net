@@ -1,13 +1,10 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import styled from 'styled-components';
-import { format } from 'date-fns';
 
 import logo from '../images/logo.png';
 
 export default () => {
-  const thisMonth = format(new Date(), 'YYYY/MM');
-
   return (
     <Footer>
       <SiteInfo>

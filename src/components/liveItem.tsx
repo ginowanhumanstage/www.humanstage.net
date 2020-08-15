@@ -7,7 +7,7 @@ import loadable from '@loadable/component';
 const ShareButton = loadable(() => import('./shareButton'));
 
 const Index = ({ isDetail, data }) => {
-  const dates = data.acf.date.split('/');
+  const dates = data.acfScuedule.date.split('/');
   const dataTime = new Date(`${dates[2]}/${dates[1]}/${dates[0]}`);
 
   const dateTime = format(dataTime, 'MM/DD');
@@ -16,15 +16,15 @@ const Index = ({ isDetail, data }) => {
   const weekDay = day[getDay(dataTime)];
 
   const openTime = new Date(
-    `${dates[2]}/${dates[1]}/${dates[0]} ${data.acf.open}`,
+    `${dates[2]}/${dates[1]}/${dates[0]} ${data.acfScueduleScuedule.open}`,
   );
   const startTime = new Date(
-    `${dates[2]}/${dates[1]}/${dates[0]} ${data.acf.start}`,
+    `${dates[2]}/${dates[1]}/${dates[0]} ${data.acfScueduleScuedule.start}`,
   );
 
   const openDate = format(openTime, 'HH:mm');
   const startDate = format(startTime, 'HH:mm');
-  const performers = data.acf.act ? data.acf.act.split(/\n|\r\n|\r/) : null;
+  const performers = data.acfScueduleScuedule.act ? data.acfScueduleScuedule.act.split(/\n|\r\n|\r/) : null;
   const performer = performers
     ? performers.map((act, i) => {
       return <li key={i}>{act}</li>;
@@ -47,9 +47,9 @@ const Index = ({ isDetail, data }) => {
   return (
     <LiveItem>
       <MainVisual>
-        {data?.featured_media?.localFile?.childImageSharp?.fluid ? (
+        {data?.featuredImage?.node?.localFile?.childImageSharp?.fluid ? (
           <Img
-            fluid={data.featured_media.localFile.childImageSharp.fluid}
+            fluid={data.featuredImage.node.localFile.childImageSharp.fluid}
             alt=""
           />
         ) : (
@@ -69,7 +69,7 @@ const Index = ({ isDetail, data }) => {
       {!isDetail ? <Title dangerouslySetInnerHTML={{ __html: data.title }} /> : null}
       <Adv isDetail={isDetail}>
         <AdvHeadline>Ticket info</AdvHeadline>
-        <AdvContent dangerouslySetInnerHTML={{ __html: data.acf.adv }} />
+        <AdvContent dangerouslySetInnerHTML={{ __html: data.acfScueduleScuedule.adv }} />
       </Adv>
       <Cast isDetail={isDetail}>
         <CastHeadline>Cast</CastHeadline>

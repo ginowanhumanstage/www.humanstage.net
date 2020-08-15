@@ -6,19 +6,19 @@ import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PageContent from '../components/pageContent';
 
-export default ({ data, pageContext }) => {
+export default ({ data }) => {
   return (
-    <Layout lastSchedule={pageContext.lastSchedule}>
-      <SEO title={data.wordpressPage.title} />
-      <Headline>{data.wordpressPage.title}</Headline>
-      <PageContent data={data.wordpressPage} />
+    <Layout>
+      <SEO title={data.wpPage.title} />
+      <Headline>{data.wpPage.title}</Headline>
+      <PageContent data={data.wpPage} />
     </Layout>
   );
 };
 
 export const query = graphql`
   query($id: String!) {
-    wordpressPage(id: { eq: $id }) {
+    wpPage(id: { eq: $id }) {
       title
       content
     }
