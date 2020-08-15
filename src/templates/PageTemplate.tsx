@@ -1,12 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
+import gql from 'graphql-tag';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PageContent from '../components/pageContent';
+import withPreview from '../components/withPreview';
 
-export default ({ data }) => {
+const PageTemplate = ({ data }) => {
   return (
     <Layout>
       <SEO title={data.wpPage.title} />
@@ -25,6 +27,21 @@ export const query = graphql`
   }
 `;
 
+const PREVIEW_QUERY = gql`
+  query getPreview($id: Int!) {
+    postBy(postId: $id) {
+      title
+      revisions {
+        nodes {
+          id
+          title
+          content
+        }
+      }
+    }
+  }
+`;
+
 const Headline = styled.h1`
   text-align: center;
   font-size: 1.4rem;
@@ -35,3 +52,5 @@ const Headline = styled.h1`
     font-size: 1.7rem;
   }
 `;
+
+export default withPreview({ preview: PREVIEW_QUERY })(PageTemplate);
