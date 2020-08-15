@@ -14,7 +14,7 @@ import './layout.css';
 
 type Props = {
   children: ReactNode;
-}
+};
 const Layout = ({ children }: Props) => {
   return (
     <>

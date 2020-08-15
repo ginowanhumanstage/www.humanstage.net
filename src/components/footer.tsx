@@ -24,9 +24,7 @@ export default () => {
           </li>
         </Menu>
         <SiteInfoAddress>
-          <p>
-            Mail : human-s@nirai.ne.jp
-          </p>
+          <p>Mail : human-s@nirai.ne.jp</p>
         </SiteInfoAddress>
       </SiteInfo>
       <Copyright>

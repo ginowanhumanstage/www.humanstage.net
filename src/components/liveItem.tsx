@@ -24,23 +24,24 @@ const Index = ({ isDetail, data }) => {
 
   const openDate = format(openTime, 'HH:mm');
   const startDate = format(startTime, 'HH:mm');
-  const performers = data.acfScueduleScuedule.act ? data.acfScueduleScuedule.act.split(/\n|\r\n|\r/) : null;
+  const performers = data.acfScueduleScuedule.act
+    ? data.acfScueduleScuedule.act.split(/\n|\r\n|\r/)
+    : null;
   const performer = performers
     ? performers.map((act, i) => {
-      return <li key={i}>{act}</li>;
-    })
+        return <li key={i}>{act}</li>;
+      })
     : null;
 
-  let content = "";
+  let content = '';
 
   if (data.description) {
     content += data.description;
     if (data.content) {
-      content += "\n";
+      content += '\n';
       content += data.content;
     }
-  }
-  else if (data.content) {
+  } else if (data.content) {
     content += data.content;
   }
 
@@ -53,10 +54,10 @@ const Index = ({ isDetail, data }) => {
             alt=""
           />
         ) : (
-            <NoImage>
-              <NoImageCaption>HUMAN STAGE</NoImageCaption>
-            </NoImage>
-          )}
+          <NoImage>
+            <NoImageCaption>HUMAN STAGE</NoImageCaption>
+          </NoImage>
+        )}
       </MainVisual>
       <Meta>
         <MetaDateTime>
@@ -66,10 +67,14 @@ const Index = ({ isDetail, data }) => {
           <MetaDateTimeStart>START {startDate}</MetaDateTimeStart>
         </MetaDateTime>
       </Meta>
-      {!isDetail ? <Title dangerouslySetInnerHTML={{ __html: data.title }} /> : null}
+      {!isDetail ? (
+        <Title dangerouslySetInnerHTML={{ __html: data.title }} />
+      ) : null}
       <Adv isDetail={isDetail}>
         <AdvHeadline>Ticket info</AdvHeadline>
-        <AdvContent dangerouslySetInnerHTML={{ __html: data.acfScueduleScuedule.adv }} />
+        <AdvContent
+          dangerouslySetInnerHTML={{ __html: data.acfScueduleScuedule.adv }}
+        />
       </Adv>
       <Cast isDetail={isDetail}>
         <CastHeadline>Cast</CastHeadline>
@@ -331,7 +336,7 @@ const ShareButtonWrapper = styled.div`
 
 const NoImage = styled.div`
   height: 212px;
-  background: #DDD;
+  background: #ddd;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -344,7 +349,7 @@ const NoImage = styled.div`
 const NoImageCaption = styled.p`
   line-height: 1.5;
   font-size: 1.6rem;
-  color: #AAA;
+  color: #aaa;
 
   @media (min-width: 768px) {
     font-size: 1.6rem;

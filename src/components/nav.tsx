@@ -59,10 +59,7 @@ export default () => {
           </a>
         </li>
         <li>
-          <a
-            href="https://humanstage.thebase.in/"
-            target="_blank"
-          >
+          <a href="https://humanstage.thebase.in/" target="_blank">
             <ShoppingIcon size={20} />
           </a>
         </li>

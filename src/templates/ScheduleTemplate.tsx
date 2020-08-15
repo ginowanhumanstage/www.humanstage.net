@@ -47,9 +47,7 @@ export default ({ data, pageContext, location }) => {
 
 export const query = graphql`
   query {
-    allWpPost(
-      sort: { fields: [slug], order: ASC }
-    ) {
+    allWpPost(sort: { fields: [slug], order: ASC }) {
       edges {
         node {
           id
