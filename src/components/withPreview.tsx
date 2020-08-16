@@ -1,13 +1,22 @@
 import React from 'react';
-import { useQuery, gql, DocumentNode } from '@apollo/client';
+import { useQuery, DocumentNode } from '@apollo/client';
 import queryString from 'query-string';
 
 const withPreview = (
   args: { preview: DocumentNode | false } = { preview: false },
 ) => Component => {
   const preview = props => {
+    // NOTE: WP プラグインの GatsbyJS による preview を試すのであれば、referrer
+    // で iframe 外のパラメータの取得を試みる
+    // const url =
+    //   window.location != window.parent.location
+    //     ? document.referrer
+    //     : document.location.href;
+
     const parsed = queryString.parse(props.location.search);
-    const { nonce, preview, post } = parsed;
+    const post = parsed.preview_id;
+    const preview = parsed.preview;
+    const nonce = parsed.preview_nonce;
 
     // Id needs to be an int for preview query.
     const id = parseInt(post as string, 10);
@@ -27,7 +36,7 @@ const withPreview = (
     });
 
     if (loading) return <p>Loading preview...</p>;
-    if (error) return <p>Error :(</p>;
+    if (error) return <p>{`${error}`}</p>;
 
     return <Component preview={data} {...props} />;
   };

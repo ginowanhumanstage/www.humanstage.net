@@ -1,8 +1,9 @@
-import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
 
 const cache = new InMemoryCache();
-const link = createHttpLink({
+const link = new HttpLink({
   uri: `https://${process.env.WP_BASE_URL}/graphql`,
+  credentials: 'include',
 });
 
 export const client = new ApolloClient({
