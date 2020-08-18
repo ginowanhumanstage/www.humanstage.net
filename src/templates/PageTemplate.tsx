@@ -1,17 +1,30 @@
 import React from 'react';
 import styled from 'styled-components';
 import { graphql } from 'gatsby';
+import gql from 'graphql-tag';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import PageContent from '../components/pageContent';
+import withPreview from '../components/withPreview';
 
-export default ({ data }) => {
+type Props = {
+  data: any;
+  preview: any;
+};
+const PageTemplate = (props: Props) => {
+  /**
+   * Determine if we're looking at a preview or live page.
+   */
+  const postData = props.preview
+    ? props.preview.pageBy.revisions.nodes[0]
+    : props.data.wpPage;
+
   return (
     <Layout>
-      <SEO title={data.wpPage.title} />
-      <Headline>{data.wpPage.title}</Headline>
-      <PageContent data={data.wpPage} />
+      <SEO title={postData.title} />
+      <Headline>{postData.title}</Headline>
+      <PageContent data={postData} />
     </Layout>
   );
 };
@@ -21,6 +34,22 @@ export const query = graphql`
     wpPage(id: { eq: $id }) {
       title
       content
+    }
+  }
+`;
+
+// この query は gatsby 経由ではなく直接 WP へのリクエストへ用いる。
+const PREVIEW_QUERY = gql`
+  query getPreview($id: Int!) {
+    pageBy(pageId: $id) {
+      title
+      revisions(first: 1) {
+        nodes {
+          id
+          title
+          content
+        }
+      }
     }
   }
 `;
@@ -35,3 +64,5 @@ const Headline = styled.h1`
     font-size: 1.7rem;
   }
 `;
+
+export default withPreview({ preview: PREVIEW_QUERY })(PageTemplate);
