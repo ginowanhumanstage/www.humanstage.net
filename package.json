@@ -30,17 +30,17 @@
     "react-dom": "^16.12.0",
     "react-feather": "^2.0.3",
     "react-helmet": "^6.1.0",
-    "styled-components": "^4.4.1",
-    "typescript": "^3.7.4"
+    "styled-components": "^5.1.1",
+    "typescript": "^4.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.2",
-    "@storybook/addon-actions": "^5.3.0",
-    "@storybook/addon-links": "^5.3.0",
-    "@storybook/addons": "^5.3.0",
-    "@storybook/react": "^5.3.0",
+    "@babel/core": "^7.11.4",
+    "@storybook/addon-actions": "^6.0.16",
+    "@storybook/addon-links": "^6.0.16",
+    "@storybook/addons": "^6.0.16",
+    "@storybook/react": "^6.0.16",
     "babel-loader": "^8.1.0",
-    "prettier": "^1.19.1"
+    "prettier": "^2.0.5"
   },
   "license": "MIT",
   "scripts": {
