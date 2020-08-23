@@ -90,8 +90,8 @@ export default class Calendar extends React.Component<IProps> {
           {hasEvent && path ? (
             <Link to={path}>{format(day, 'D')}</Link>
           ) : (
-              <span>{format(day, 'D')}</span>
-            )}
+            <span>{format(day, 'D')}</span>
+          )}
         </DayItem>,
       );
     });
