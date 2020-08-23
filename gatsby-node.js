@@ -58,7 +58,7 @@ exports.createPages = async ({ graphql, actions }) => {
 
   // トップページを生成
   const topPageTemplate = path.resolve(`src/templates/TopPageTemplate.tsx`);
-  const today = format(new Date(), 'YYYYMMDD');
+  const today = format(new Date(), 'yyyyMMdd');
 
   createPage({
     path: '/',
