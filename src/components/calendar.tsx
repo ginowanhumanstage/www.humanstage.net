@@ -15,12 +15,13 @@ import {
   isThursday,
   isFriday,
   isFirstDayOfMonth,
+  parseISO,
 } from 'date-fns';
 import jaLocale from 'date-fns/locale/ja';
 import slugToPath from '../lib/slugToPath';
 
 interface IProps {
-  date: string; // 'YYYY-MM-DD'
+  date: string; // 'yyyy-MM-dd'
   slugs: string[];
 }
 
@@ -32,8 +33,8 @@ export default class Calendar extends React.Component<IProps> {
 
   days() {
     const days = [];
-    const startDate = startOfMonth(this.props.date);
-    const endDate = endOfMonth(this.props.date);
+    const startDate = startOfMonth(parseISO(this.props.date));
+    const endDate = endOfMonth(parseISO(this.props.date));
     const startDateOfWeek = startOfWeek(startDate);
     const dayList = eachDay(startDate, endDate);
 
@@ -45,7 +46,7 @@ export default class Calendar extends React.Component<IProps> {
     if (lastMonthDates) {
       lastMonthDates.forEach(day => {
         days.push(
-          <DayItem key={format(day, 'YYYYMMDD')} lastMonth>
+          <DayItem key={format(day, 'yyyyMMdd')} lastMonth>
             {format(day, 'D')}
           </DayItem>,
         );
@@ -58,7 +59,7 @@ export default class Calendar extends React.Component<IProps> {
       let isHoliday = false;
       let isTavern = false;
       let path = null;
-      const fullDate = format(day, 'YYYYMMDD');
+      const fullDate = format(day, 'yyyyMMdd');
 
       if (
         this.props.slugs &&
@@ -102,13 +103,13 @@ export default class Calendar extends React.Component<IProps> {
     const dayHeaders = [];
 
     const days = eachDay(
-      startOfWeek(this.props.date),
-      endOfWeek(this.props.date),
+      startOfWeek(parseISO(this.props.date)),
+      endOfWeek(parseISO(this.props.date)),
     );
 
     days.forEach(day => {
       dayHeaders.push(
-        <DayHeader key={format(day, 'YYYYMMDD')}>
+        <DayHeader key={format(day, 'yyyyMMdd')}>
           {format(day, 'dd', { locale: jaLocale })}
         </DayHeader>,
       );

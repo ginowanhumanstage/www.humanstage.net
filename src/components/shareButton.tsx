@@ -20,7 +20,7 @@ export default ({ title }) => {
   const pageTitle = document.title;
   const url = location.href;
 
-  const shareBtnClickEvent = function(e) {
+  const shareBtnClickEvent = function (e) {
     e.preventDefault();
     if ((navigator as any).share) {
       (navigator as any)
@@ -34,7 +34,7 @@ export default ({ title }) => {
     }
   };
 
-  const fbBtnClickEvent = function(e) {
+  const fbBtnClickEvent = function (e) {
     e.preventDefault();
     const href = `http://www.facebook.com/sharer.php?u=${url}&amp;t=${pageTitle}`;
     window.open(
@@ -44,7 +44,7 @@ export default ({ title }) => {
     );
   };
 
-  const twBtnClickEvent = function(e) {
+  const twBtnClickEvent = function (e) {
     e.preventDefault();
 
     const href = `http://twitter.com/intent/tweet?text=${pageTitle}&amp;url=${url}&amp;`;
@@ -55,7 +55,7 @@ export default ({ title }) => {
     );
   };
 
-  const lineBtnClickEvent = function(e) {
+  const lineBtnClickEvent = function (e) {
     e.preventDefault();
 
     const href = `https://social-plugins.line.me/lineit/share?url=${url}`;
